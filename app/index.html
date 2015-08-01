@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="AwesomeAngularApp" class="class_height">
+<head>
+    <meta charset="utf-8">
+    <title>Awesome Angular App</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/app.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+
+
+<body class="class_height" ng-controller="MainCtrl">
+
+<div class="prev_next">
+    <div ng-repeat="screen in screens" ng-class="['even', 'odd'][$index %2]">
+        <div ng-show="{{$index < screens.length - 1}}" ng-if="isCurrentSlideIndex($index)" class="pull-right">
+            <a ng-click="nextSlide()">Next
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+
+        </div>
+
+        <div ng-show="{{$index > 0}}" ng-if="isCurrentSlideIndex($index)" class="pull-left">
+
+            <a ng-click="backSlide()">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                Back</a>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div ng-include src="screen.url" ng-if="isCurrentSlideIndex($index)"></div>
+    </div>
+</div>
+
+
+</body>
+
+</body>
+</html>
+
